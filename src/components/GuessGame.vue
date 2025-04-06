@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen flex items-center justify-center">
     <div class="flex flex-col items-center space-y-4 p-4 max-w-md">
-      <h2 class="text-2xl font-semibold text-2xl">Угадай число от 1 до 100</h2>
+      <h2 class="font-semibold text-2xl">Угадай число от 1 до 100</h2>
       <input
         v-model.number="guess"
         type="number"
@@ -12,7 +12,7 @@
         @click="checkGuess"
         class="bg-blue-500 text-white px-4 py-2 rounded"
       >
-         Проверить
+        Проверить
       </button>
       <p v-if="message" class="text-lg">{{ message }}</p>
       <button @click="resetGame" class="text-sm text-gray-500 underline mt-2">
