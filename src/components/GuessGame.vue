@@ -41,7 +41,9 @@ const clampGuess = (event) => {
 };
 
 const checkGuess = () => {
-  if (guess.value === target.value) {
+  if (guess.value === null || guess.value === undefined) {
+    message.value = "Выберите любое число";
+  } else if (guess.value === target.value) {
     message.value = "Угадал!";
   } else if (guess.value < target.value) {
     message.value = "Больше";
@@ -86,10 +88,10 @@ const resetGame = () => {
 }
 
 .message:empty {
-  @apply invisible h-[30px];
+  @apply opacity-0;
 }
 
 .message:not(:empty) {
-  @apply visible h-[30px];
+  @apply opacity-100;
 }
 </style>
