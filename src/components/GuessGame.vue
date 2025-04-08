@@ -8,12 +8,7 @@
         placeholder="Ваш вариант"
         class="border px-2 py-1 rounded w-full"
       />
-      <button
-        @click="checkGuess"
-        class="bg-blue-500 text-white px-4 py-2 rounded"
-      >
-        Проверить
-      </button>
+      <button @click="checkGuess" class="custom-button">Проверить</button>
       <p v-if="message" class="text-lg">{{ message }}</p>
       <button @click="resetGame" class="text-sm text-gray-500 underline mt-2">
         Начать заново
@@ -45,3 +40,15 @@ const resetGame = () => {
   message.value = "";
 };
 </script>
+
+<style scoped>
+.custom-button {
+  @apply text-gray-900 px-6 py-3 text-lg rounded-lg bg-gray-200 border border-gray-200 cursor-pointer transition-all duration-300;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+.custom-button:active {
+  @apply text-gray-600;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+</style>
