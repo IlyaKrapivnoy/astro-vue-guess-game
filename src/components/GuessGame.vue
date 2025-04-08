@@ -5,8 +5,8 @@
       <input
         v-model.number="guess"
         type="number"
-        placeholder="Ваш вариант"
-        class="border px-2 py-1 rounded w-full"
+        placeholder="Твой вариант"
+        class="custom-input"
       />
       <button @click="checkGuess" class="custom-button">Проверить</button>
       <p v-if="message" class="text-lg">{{ message }}</p>
@@ -42,6 +42,19 @@ const resetGame = () => {
 </script>
 
 <style scoped>
+.custom-input {
+  @apply w-[190px] w-full border-none outline-none bg-transparent text-lg text-gray-600 pt-[15px] pr-[5px] pb-[10px] pl-[20px] rounded-[25px];
+  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+}
+
+.custom-input::placeholder {
+  @apply text-gray-600 transition-all duration-300 ease-in-out;
+}
+
+.custom-input:focus::placeholder {
+  @apply text-gray-400;
+}
+
 .custom-button {
   @apply text-gray-900 px-6 py-3 text-lg rounded-lg bg-gray-200 border border-gray-200 cursor-pointer transition-all duration-300;
   box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
