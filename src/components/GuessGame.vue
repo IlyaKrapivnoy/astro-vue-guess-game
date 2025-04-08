@@ -1,12 +1,17 @@
 <template>
   <div class="min-h-screen flex items-center justify-center">
     <div class="flex flex-col items-center space-y-4 p-4 max-w-md">
-      <h2 class="font-semibold text-2xl">Угадай число от 1 до 100</h2>
+      <h2 class="font-semibold text-2xl text-[#5f5f5f]">
+        Угадай число от 1 до 100
+      </h2>
       <input
         v-model.number="guess"
         type="number"
         placeholder="Твой вариант"
         class="custom-input"
+        min="0"
+        max="100"
+        @input="clampGuess"
       />
       <button @click="checkGuess" class="custom-button">Проверить</button>
       <p v-if="message" class="text-lg">{{ message }}</p>
@@ -23,6 +28,17 @@ import { ref } from "vue";
 const guess = ref(null);
 const target = ref(Math.floor(Math.random() * 100) + 1);
 const message = ref("");
+
+const clampGuess = (event) => {
+  const value = event.target.valueAsNumber;
+  if (value < 0 || isNaN(value)) {
+    guess.value = 0;
+  } else if (value > 100) {
+    guess.value = 100;
+  } else {
+    guess.value = value;
+  }
+};
 
 const checkGuess = () => {
   if (guess.value === target.value) {
