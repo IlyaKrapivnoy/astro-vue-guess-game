@@ -14,10 +14,10 @@
         @input="clampGuess"
       />
       <button @click="checkGuess" class="custom-button">Проверить</button>
-      <p v-if="message" class="text-lg">{{ message }}</p>
       <button @click="resetGame" class="text-sm text-gray-500 underline mt-2">
         Начать заново
       </button>
+      <p class="text-lg message">{{ message || "" }}</p>
     </div>
   </div>
 </template>
@@ -79,5 +79,17 @@ const resetGame = () => {
 .custom-button:active {
   @apply text-gray-600;
   box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+.message {
+  @apply min-h-[1.5rem] transition-opacity duration-300;
+}
+
+.message:empty {
+  @apply invisible h-[30px];
+}
+
+.message:not(:empty) {
+  @apply visible h-[30px];
 }
 </style>
